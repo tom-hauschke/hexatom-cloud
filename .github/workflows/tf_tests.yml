@@ -1,0 +1,33 @@
+name: linting and formatting tests
+on:
+  - pull_request
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+      - name: terraform init
+        id: init
+        run: terraform init
+      - name: terraform format
+        id: fmt
+        run: terraform fmt -check
+      - name: terraform validate
+        id: validate
+        run: terraform validate -no-color
+      - name: comment pr
+        if: steps.init.outcome == 'failure' || steps.fmt.outcome == 'failure' || steps.validate.outcome == 'failure'
+        uses: thollander/actions-comment-pull-request@v2
+        with:
+          pr_number: ${{ github.event.pull_request.number }}
+          comment_tag: test-chart
+          message: |-
+            # terraform tests failed
+
+            ## terraform init: \`${{ steps.init.outcome }}\`
+            ## terraform format: \`${{ steps.fmt.outcome }}\`
+            ## terraform validate: \`${{ steps.validate.outcome }}\`
