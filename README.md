@@ -1,29 +1,3 @@
 # hexatom-cloud
 
-This repository should contain everything to create my cloud from scratch.
-
-<!-- BEGIN_TF_DOCS -->
-## Requirements
-
-No requirements.
-
-## Providers
-
-No providers.
-
-## Modules
-
-No modules.
-
-## Resources
-
-No resources.
-
-## Inputs
-
-No inputs.
-
-## Outputs
-
-No outputs.
-<!-- END_TF_DOCS -->
+This repository should contain all IaC files to create my private cloud from scratch.
