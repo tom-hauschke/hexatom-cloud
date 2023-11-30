@@ -11,4 +11,4 @@ jobs:
         uses: terraform-docs/gh-actions@v1.0.0
         with:
           fail-on-diff: true
-          working-dir: terraform/civo,terraform/cloudflare,terraform/terraform_cloud
+          # working-dir: terraform/civo,terraform/cloudflare,terraform/terraform_cloud
