@@ -8,7 +8,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
       - name: check if terraform docs inside README.md files are updated
-        uses: terraform-docs/gh-actions@v1.0.0
+        uses: terraform-docs/gh-actions@v1.1.0
         with:
           fail-on-diff: true
           working-dir: terraform/civo,terraform/cloudflare,terraform/terraform_cloud
